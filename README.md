@@ -5,7 +5,7 @@ in "administration/roles and permissions" that allow user to browse issues, crea
 
 ## Redmine version
 
-Versions: 1.3.0, 1.4 stable, 2.2.x stable.
+Versions:  1.4 stable.
 
 
 ## Installation
@@ -23,6 +23,6 @@ Set issues visibility as "Issues created by or assigned to user or watcher" to a
 ## Changes
 
 Patches:
-  * Role#ISSUES_VISIBILITY_OPTIONS
-  * Issue#visible?
-  * Issue#visible_condition
+  * Role::ISSUES_VISIBILITY_OPTIONS
+  * Issue.visible?
+  * Issue.visible_condition
