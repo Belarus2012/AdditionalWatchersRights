@@ -18,7 +18,7 @@ module IssuesVisibilityIssuePatch
           # =========== patch start ===========
           when 'watcher'
             user_ids = [user.id] + user.groups.map(&:id)
-            "(#{table_name}.author_id = #{user.id} OR #{table_name}.assigned_to_id IN (#{user_ids.join(',')}) OR #{table_name}.id IN (SELECT watchable_id FROM #{Watcher.table.name} WHERE (user_id=#{user.id} AND watchable_type='issue')))"
+            "(#{table_name}.author_id = #{user.id} OR #{table_name}.assigned_to_id IN (#{user_ids.join(',')}) OR #{table_name}.id IN (SELECT watchable_id FROM #{Watcher.table_name} WHERE (user_id=#{user.id} AND watchable_type='issue')))"
           # =========== patch end =============
           else
             '1=0'
