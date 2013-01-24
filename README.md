@@ -1,4 +1,4 @@
-# Redmine own time entries
+# AdditionalWatchersRights
 
 Plugin which add statement "Issues created by or assigned to user or watcher" to issues visibility option
 in "administration/roles and permissions" that allow user to browse issues, created by or assigned to him and issues in which he marked as watcher.
