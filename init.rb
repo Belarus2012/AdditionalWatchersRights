@@ -1,11 +1,5 @@
 require 'redmine'
-
-require 'issues_visibility_watched_patch'
-
-Rails.configuration.to_prepare do
-  Role.send(:include, IssuesVisibilityWatchedPatch)
-end
-
+require 'redmine_issues_visibility'
 
 Redmine::Plugin.register :redmine_issues_visibility do
   name 'Redmine Issues Visibility plugin'
