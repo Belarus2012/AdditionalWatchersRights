@@ -23,6 +23,6 @@ Set issues visibility as "Issues created by or assigned to user or watcher" to a
 ## Changes
 
 Patches:
-  * Role#ISSUES_VISIBILITY_OPTIONS
-  * Issue#visible?
-  * Issue#visible_condition
+  * Role::ISSUES_VISIBILITY_OPTIONS
+  * Issue.visible?
+  * Issue.visible_condition
