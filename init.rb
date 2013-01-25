@@ -2,10 +2,10 @@ require 'redmine'
 require 'redmine_issues_visibility'
 
 Redmine::Plugin.register :redmine_issues_visibility do
-  name 'Redmine Issues Visibility plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  name 'AdditionalWatchersRights'
+  author 'Twinslash'
+  description 'Plugin which add statement "Issues created by or assigned to user or watcher" to issues visibility option.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/Belarus2012/AdditionalWatchersRights'
+  author_url 'http://twinslash.com/'
 end
