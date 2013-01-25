@@ -1,5 +1,6 @@
 module IssuesVisibilityIssuePatch
   def self.included(base)
+    base.send(:include, InstanceMethods)
 
     base.class_eval do
 
@@ -27,7 +28,7 @@ module IssuesVisibilityIssuePatch
       end
 
       # Returns true if usr or current user is allowed to view the issue's show page
-      def visible?(usr=nil)
+      def visible?(usr=nil, par=false)
         (usr || User.current).allowed_to?(:view_issues, self.project) do |role, user|
           case role.issues_visibility
           when 'all'
@@ -38,7 +39,7 @@ module IssuesVisibilityIssuePatch
             self.author == user || user.is_or_belongs_to?(assigned_to)
           # =========== patch start ===========
           when 'watcher'
-            self.author == user || user.is_or_belongs_to?(assigned_to) || self.watchers.map(&:user_id).include?(user.id)
+            self.author == user || user.is_or_belongs_to?(assigned_to) || self.watchers.map(&:user_id).include?(user.id) || par
           # =========== patch end =============
           else
             false
@@ -47,6 +48,18 @@ module IssuesVisibilityIssuePatch
       end
 
     end
-
   end
+
+  module InstanceMethods
+    # Returns an array of users that are proposed as watchers
+    # In patch we just send one more parameter 'true' to 'visible?' method
+    def addable_watcher_users
+      users = self.project.users.sort - self.watcher_users
+      if respond_to?(:visible?)
+        users.reject! {|user| !visible?(user, true)}
+      end
+      users
+    end
+  end
+
 end
